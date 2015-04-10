@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+
+int main(void)
+{
+    char Sentence[100];
+    int i = 0;
+    int Space, k;
+
+    gets(Sentence);
+    while(Sentence[i] != '\0')
+        i++;
+    Space = i;
+    /*
+    下面的for循环处理除首单词之外的单词，找到末尾字母位置i复制给space，向前找到空格位置i，for循环到space，输出单词。
+    然后把i复制给space，如此反复。
+    */
+    for(; i >= 0; i--)
+    {
+        if(Sentence[i] == ' ')
+        {
+            for(k = i + 1; k <= Space; k ++)
+                putchar(Sentence[k]);
+            Space = i;
+        }
+    }
+    //剩下一个首单词
+    for(k = i + 1; k <= Space; k++)
+        putchar(Sentence[k]);
+
+    return 0;
+}
